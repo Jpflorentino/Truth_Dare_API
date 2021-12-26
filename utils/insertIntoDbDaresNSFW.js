@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
-const dareDocument = require("./files/daresNSFW.json");
+const document = require("../files/daresNSFW.json");
 
 // Replace the following with your Atlas connection string
 const url = process.env.CONNECTION_STRING;
@@ -16,9 +16,9 @@ async function run() {
     const db = client.db(dbName);
 
     // Use the collection "people"
-    const col = db.collection("dareNSFW");
+    const col = db.collection("daresNSFW");
     // Insert a single document, wait for promise so we can read it back
-    const p = await col.insertOne(dareDocument);
+    const p = await col.insertOne(document);
     // Find one document
     const myDoc = await col.findOne();
     // Print to the console
